@@ -15,5 +15,6 @@ import config from "@/config";
     background-size: cover;
     color: white;
     padding: 2rem;
+    height: 350px;
 }
 </style>
