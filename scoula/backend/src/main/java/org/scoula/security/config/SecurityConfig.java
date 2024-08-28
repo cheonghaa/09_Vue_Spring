@@ -29,6 +29,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.multipart.support.MultipartFilter;
+
+import javax.servlet.ServletContext;
 
 @Configuration
 @EnableWebSecurity
@@ -67,13 +70,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/assets/**", "/*", "/api/member/**");
     }
 
-    // 문자셋 필터
-    public CharacterEncodingFilter encodingFilter() {
-        CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
-        encodingFilter.setEncoding("UTF-8");
-        encodingFilter.setForceEncoding(true);
-        return encodingFilter;
-    }
+
+
 
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {
@@ -96,15 +94,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         // 한글 인코딩 필터 설정
-        http.addFilterBefore(encodingFilter(), CsrfFilter.class)
+        http
         // 인증 에러 필터
             .addFilterBefore(authenticationErrorFilter, UsernamePasswordAuthenticationFilter.class)
         // Jwt 인증 필터
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
         // 로그인 인증 필터
             .addFilterBefore(jwtUsernamePasswordAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
-        http.addFilterBefore(encodingFilter(), CsrfFilter.class);
 
 
         http

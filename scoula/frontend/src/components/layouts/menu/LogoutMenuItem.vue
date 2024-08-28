@@ -1,8 +1,11 @@
 <script setup>
 import { useRouter } from "vue-router";
-const router = useRouter(); // 페이지 이동 코드 (중요!)
+import { useAuthStore } from "@/stores/auth";
+const store = useAuthStore();
+const router = useRouter();
 const logout = (e) => {
     // 로그아웃
+    store.logout();
     router.push("/");
 };
 </script>
