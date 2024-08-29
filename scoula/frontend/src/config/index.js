@@ -1,6 +1,6 @@
 export default {
-    title: "Scoula", // 메인 타이틀
-    subtitle: "KB Fullstack 학습 (Vue+Spring)", // 서브 타이틀
+    title: "Mangom", // 메인 타이틀
+    subtitle: "망곰이와 함께하는 코딩공부", // 서브 타이틀
     menus: [
         // 메인 메뉴 구성 정보
         {

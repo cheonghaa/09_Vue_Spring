@@ -15,7 +15,7 @@ const toggleNavShow = () => (state.isNavShow = !state.isNavShow); //이벤트핸
         <div class="container-fluid">
             <router-link class="navbar-brand" to="/">
                 <i class="fa-solid fa-house"></i>
-                Scoula
+                망곰하우스
             </router-link>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" @click="toggleNavShow">
                 <span class="navbar-toggler-icon"></span>
