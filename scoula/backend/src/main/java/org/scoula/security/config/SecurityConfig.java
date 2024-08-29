@@ -107,7 +107,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 // 일단 모든 접근 허용
+                .antMatchers(HttpMethod.POST,"/api/member").authenticated()
+                .antMatchers(HttpMethod.PUT,"/api/member", "/api/member/*/changepassword").authenticated()
                 .anyRequest().permitAll();
+
+
         http.httpBasic().disable() // 기본 HTTP 인증 비활성화
                 .csrf().disable() // CSRF 비활성화
                 .formLogin().disable() // formLogin 비활성화 관련 필터 해제
