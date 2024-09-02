@@ -41,12 +41,12 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
     }
 
     // POST body 문자 인코딩 필터 설정 - UTF-8 설정
-    protected Filter[] getServletFilters() {
-        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-        characterEncodingFilter.setEncoding("UTF-8");
-        characterEncodingFilter.setForceEncoding(true);
-        return new Filter[] {characterEncodingFilter};
-    }
+//    protected Filter[] getServletFilters() {
+//        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+//        characterEncodingFilter.setEncoding("UTF-8");
+//        characterEncodingFilter.setForceEncoding(true);
+//        return new Filter[] {characterEncodingFilter};
+//    }
 
     //ServletRegistration.Dynamic 클래스의 메소드 재정의
     //서블릿의 등록 및 설정을 사용자 정의할 때 사용

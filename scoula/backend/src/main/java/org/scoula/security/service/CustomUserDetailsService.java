@@ -14,12 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
-
     private final UserDetailsMapper mapper;
-
     @Override
-    //loadUserByUsername : 사용자 이름을 받아 해당 사용자의 정보를 로드하고
-    // 그 정보를 UserDetails 객체로 반환
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         MemberVO vo = mapper.get(username);
         if(vo == null) {

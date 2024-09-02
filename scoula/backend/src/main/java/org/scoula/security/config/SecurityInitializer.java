@@ -14,7 +14,6 @@ public class SecurityInitializer extends AbstractSecurityWebApplicationInitializ
         encodingFilter.setForceEncoding(true);
         return encodingFilter;
     }
-
     @Override
     protected void beforeSpringSecurityFilterChain(ServletContext servletContext) {
         insertFilters(servletContext, encodingFilter(), new MultipartFilter());

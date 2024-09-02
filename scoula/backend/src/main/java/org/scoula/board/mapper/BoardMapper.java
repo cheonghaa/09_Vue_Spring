@@ -6,21 +6,13 @@ import org.scoula.board.domain.BoardVO;
 
 import java.util.List;
 public interface BoardMapper {
-//    @Select("SELECT * FROM tbl_board")
-    public List<BoardVO> getList();
-
-//    @Select("SELECT * FROM tbl_board WHERE no = #{no}")
-    public BoardVO get(@Param("no") Long no);
-
-//    @Insert("INSERT INTO tbl_board (title, content, writer) VALUES (#{title}, #{content}, #{writer})")
-//    @Options(useGeneratedKeys = true, keyProperty = "no")
-    public void create(BoardVO board);
-
-    public int update(BoardVO board);
-
-    public int delete(@Param("no") Long no);
-    public void createAttachment(BoardAttachmentVO attach);
-    public List<BoardAttachmentVO> getAttachmentList(Long bno);
-    public BoardAttachmentVO getAttachment(Long no);
-    public int deleteAttachment(Long no);
+    List<BoardVO> getList();
+    BoardVO get(Long no);
+    void create(BoardVO board);
+    int update(BoardVO board);
+    int delete(Long no);
+    void createAttachment(BoardAttachmentVO attach);
+    List<BoardAttachmentVO> getAttachmentList(Long bno);
+    BoardAttachmentVO getAttachment(Long no);
+    int deleteAttachment(Long no);
 }
