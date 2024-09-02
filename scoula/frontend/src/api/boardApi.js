@@ -3,14 +3,9 @@ const BASE_URL = "/api/board";
 const headers = { "Content-Type": "multipart/form-data" };
 export default {
     async getList(params) {
-        console.log(params, "params");
-        try {
-            const { data } = await api.get(BASE_URL, { params });
-            console.log("BOARD GET LIST: ", data);
-            return data;
-        } catch (e) {
-            console.log(e.message);
-        }
+        const { data } = await api.get(BASE_URL, { params });
+        console.log("BOARD GET LIST: ", data);
+        return data;
     },
     async create(article) {
         const formData = new FormData();
@@ -22,9 +17,13 @@ export default {
                 formData.append("files", article.files[i]);
             }
         }
-        const { data } = await api.post(BASE_URL, formData, { headers });
-        console.log("BOARD POST: ", data);
-        return data;
+        try {
+            const { data } = await api.post(BASE_URL, formData, { headers });
+            console.log("BOARD POST: ", data);
+            return data;
+        } catch (e) {
+            console.log("create", e.message);
+        }
     },
 
     async get(no) {

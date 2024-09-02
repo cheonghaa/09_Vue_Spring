@@ -11,7 +11,6 @@ const load = async () => {
     console.log("tests", api);
     try {
         page.value = await api.getList();
-        console.log(page.value);
     } catch (e) {
         console.log(e.message);
     }

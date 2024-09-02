@@ -101,25 +101,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
         // 로그인 인증 필터
             .addFilterBefore(jwtUsernamePasswordAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
-
-        http
-                .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS).permitAll()
                 // 일단 모든 접근 허용
 //                .antMatchers(HttpMethod.POST,"/api/member").authenticated()
 //                .antMatchers(HttpMethod.PUT,"/api/member", "/api/member/*/changepassword").authenticated()
-                .antMatchers(HttpMethod.POST, "/api/board/**").authenticated()
-                .antMatchers(HttpMethod.PUT, "/api/board/**").authenticated()
-                .antMatchers(HttpMethod.DELETE, "/api/board/**").authenticated()
+//                .antMatchers(HttpMethod.POST, "/api/board/**").authenticated()
+//                .antMatchers(HttpMethod.PUT, "/api/board/**").authenticated()
+//                .antMatchers(HttpMethod.DELETE, "/api/board/**").authenticated()
+
+        http.exceptionHandling()
+                        .authenticationEntryPoint(authenticationEntryPoint)
+                                .accessDeniedHandler(accessDeniedHandler);
+        http.authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
+//                .antMatchers(HttpMethod.POST, "/api/board/**").authenticated()
+//                .antMatchers(HttpMethod.PUT, "/api/board/**").authenticated()
+//                .antMatchers(HttpMethod.DELETE, "/api/board/**").authenticated()
                 .anyRequest().permitAll();
-
-
 
         http.httpBasic().disable() // 기본 HTTP 인증 비활성화
                 .csrf().disable() // CSRF 비활성화
                 .formLogin().disable() // formLogin 비활성화 관련 필터 해제
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // 세션 생성 모드 설정
+
 
 
 

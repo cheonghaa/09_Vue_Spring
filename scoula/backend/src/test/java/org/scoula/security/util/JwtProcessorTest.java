@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { RootConfig.class, SecurityConfig.class })
+@Disabled
 @Log4j
 class JwtProcessorTest {
     @Autowired

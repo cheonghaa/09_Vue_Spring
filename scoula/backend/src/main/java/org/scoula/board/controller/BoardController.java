@@ -29,6 +29,7 @@ public class BoardController {
     }
     @PostMapping("")
     public ResponseEntity<BoardDTO> create(BoardDTO board) {
+        log.info("create: {}", board);
         return ResponseEntity.ok(service.create(board));
     }
     @PutMapping("/{no}")
