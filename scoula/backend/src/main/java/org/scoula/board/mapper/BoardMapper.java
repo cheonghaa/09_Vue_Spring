@@ -3,9 +3,13 @@ package org.scoula.board.mapper;
 import org.apache.ibatis.annotations.Param;
 import org.scoula.board.domain.BoardAttachmentVO;
 import org.scoula.board.domain.BoardVO;
+import org.scoula.common.pagination.PageRequest;
 
 import java.util.List;
 public interface BoardMapper {
+    int getTotalCount();
+    List<BoardVO> getPage(PageRequest pageRequest);
+
     List<BoardVO> getList();
     BoardVO get(Long no);
     void create(BoardVO board);

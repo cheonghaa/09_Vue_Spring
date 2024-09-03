@@ -1,0 +1,1 @@
+import{y as t}from"./index-CtPXxlfV.js";const r=t.create({timeout:1e3});r.interceptors.request.use(e=>e,e=>Promise.reject(e));r.interceptors.response.use(e=>e,async e=>Promise.reject(e));export{r as i};
